@@ -1,0 +1,25 @@
+version: '3'
+services:
+  # cache:
+  #   image: "redis"
+  # db:
+  #   image: "postgres:10"
+  # http:
+  #   image: "nginx"
+  django:
+    environment:
+      - LOGLEVEL=INFO
+      - FIXER_KEY=
+      - RATES_CLIENT=ecb # change to fixer, after setting the FIXER_KEY
+      - RATES_TIMEOUT=3600
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile-dev
+    command: ./manage.py runserver 0:3031
+    # command: uwsgi --chdir=/code/src --socket 0.0.0.0:3031 --protocol uwsgi --module forex.web.wsgi:application
+    volumes:
+      - .:/code
+    ports:
+      - "8000:3031"
+    # depends_on:
+    #   - db

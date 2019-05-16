@@ -1,0 +1,7 @@
+FROM python:3.7
+ENV PYTHONUNBUFFERED 1
+RUN mkdir -p /code/src
+COPY requirements.txt /code/
+RUN pip install --no-cache-dir -r /code/requirements.txt
+RUN pip install --no-cache-dir .
+WORKDIR /code/src/

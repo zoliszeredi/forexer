@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'trade/style.css' %}">
+</head>
+
+<body>
+<div class="container">
+<h1> New Trade </h1>
+<hr>
+
+<form method="post">{% csrf_token %}
+
+<div class="left-column">
+<label for="id_sell_currency">Sell Currency:</label>
+<select id="id_sell_currency" name="sell_currency" onchange="check(event)">
+    <option value=""></option>
+    {% for currency in currencies %}
+    <option value="{{currency}}">{{currency}}</option>
+    {% endfor %}
+</select>
+<label for="id_sell_amount">Sell Amount:</label>
+<input type="number" id="id_sell_amount" name="sell_amount" onchange="check(event)">
+<input type="submit" value="Create">
+
+</div>
+
+
+<label> Rate </label>
+<input id="id_rate" readonly>
+
+
+<div class="right-column">
+<label for="id_buy_currency">Buy Currency:</label>
+<select id="id_buy_currency" name="buy_currency" onchange="check(event)">
+    <option value=""></option>
+    {% for currency in currencies %}
+    <option value="{{currency}}">{{currency}}</option>
+    {% endfor %}
+</select>
+<label> Buy Amount </label>
+<input id="id_buy_amount" readonly>
+<a href="{% url 'trade-listview' %}"> <button type="button"> Cancel </button> </a>
+</div>
+
+
+</form>
+
+</div>
+
+<script type="text/javascript" src="{% static 'trade/actions.js' %}"> </script>
+</body>
+</html>

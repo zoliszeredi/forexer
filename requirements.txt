@@ -1,0 +1,7 @@
+Django==2.2.1
+# psycopg2==2.8.2
+# uwsgi==2.0.18
+# redis==3.2.1
+# django-redis==4.10.0
+requests==2.21.0
+djangorestframework==3.9.4

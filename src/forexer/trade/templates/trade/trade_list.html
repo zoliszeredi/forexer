@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'trade/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+<h1>Booked Trades</h1>
+<hr>
+
+
+<a href="{% url 'trade-createview' %}"> <button class="float-right" type="button"> New Trade </button> </a>
+
+<table>
+<tr>
+  <th> Sell CCY </th>
+  <th> Sell Amount </th>
+  <th> Buy CCY </th>
+  <th> Buy Amount </th>
+  <th> Rate </th>
+  <th> Date Booked </th>
+</tr>
+
+{% for trade in object_list %}
+<tr>
+  <td> {{ trade.sell_currency }} </td>
+  <td> {{ trade.sell_amount }} </td>
+  <td> {{ trade.buy_currency }} </td>
+  <td> {{ trade.buy_amount }} </td>
+
+  <td> {{ trade.rate }} </td>
+  <td> {{ trade.date_booked |date:"d/m/Y H:i" }} </td>
+</tr>
+{% endfor %}
+
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+</body>
+</html>

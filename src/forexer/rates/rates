@@ -1,0 +1,9 @@
+  /home/stz/source/forexer/src/forexer/rates:
+  total used in directory 20 available 210725020
+  drwxr-xr-x 2 stz users 4096 May 14 00:55 .
+  drwxr-xr-x 6 stz users 4096 May 14 00:51 ..
+  -rw-r--r-- 1 stz users 1516 May 14 00:55 client.py
+  -rw-r--r-- 1 stz users 3961 May 13 20:38 client.py~
+  -rw-r--r-- 1 stz users    0 May 13 20:37 __init__.py
+  -rw-r--r-- 1 stz users 2447 May 14 00:55 api.py
+  -rw-r--r-- 1 stz users    0 May 14 00:53 main.py~
